@@ -13,7 +13,12 @@
     "semi": [2, "always"],
     "react/prop-types": 0,
     "autofix/no-debugger": "error",
-    "prettier/prettier": "warn"
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ]
     /*"no-unused-vars": "warn"*/
   }
 }
