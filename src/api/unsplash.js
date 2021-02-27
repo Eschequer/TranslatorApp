@@ -5,7 +5,7 @@ export default axios.create({
   headers: {
     Authorization: "Client-ID YEaAYSk4rasZoS1sQSrTbs3GNVwoDpkS80axg9eoomA",
   },
-  /*params: {
+  /*  params: {
     client_id: "YEaAYSk4rasZoS1sQSrTbs3GNVwoDpkS80axg9eoomA",
   },*/
 });

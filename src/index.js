@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import ImagesDisplayApp from "./Components/ImagesDisplay/ImagesDisplayApp";
+
+import VideoDisplayApp from "./Components/VideoDisplay/VideoDisplayApp";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ImagesDisplayApp />
+    <VideoDisplayApp />
   </React.StrictMode>,
   document.getElementById("root")
 );
