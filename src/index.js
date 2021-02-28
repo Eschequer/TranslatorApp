@@ -2,12 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-
-import VideoDisplayApp from "./Components/VideoDisplay/VideoDisplayApp";
+import AccordionApp from "./Components/Accordion/AccordionApp";
 
 ReactDOM.render(
   <React.StrictMode>
-    <VideoDisplayApp />
+    <AccordionApp />
   </React.StrictMode>,
   document.getElementById("root")
 );
