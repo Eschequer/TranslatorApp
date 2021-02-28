@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import AccordionApp from "./Components/Accordion/AccordionApp";
+import WidgetsApp from "./Components/Widgets/WidgetsApp";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AccordionApp />
+    <WidgetsApp />
   </React.StrictMode>,
   document.getElementById("root")
 );
