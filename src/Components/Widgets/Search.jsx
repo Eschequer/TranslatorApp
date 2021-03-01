@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import wikipedia from "../../api/wikipedia";
 
 function Search() {
-  const [term, setTerm] = useState("cats");
+  const [term, setTerm] = useState("");
 
   const [results, setResults] = useState([]);
 
@@ -21,14 +21,21 @@ function Search() {
         console.dir(e.message);
       }
     };
-    /*
-    setTimeout(() => {
-      console.log("setTimeout");
-      if (term) search();
-    }, 5000);*/
 
+    /* // when initial term value is set
+    if (term && !results.length) {
+      search();
+    } else {
+      timer = setTimeout(search, 1000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }*/
+
+    // when no initial term value is set
     if (term) {
-      timer = setTimeout(search, 3000);
+      timer = setTimeout(search, 1000);
     }
 
     return () => {
