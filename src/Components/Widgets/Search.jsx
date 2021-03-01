@@ -2,46 +2,36 @@ import React, { useState, useEffect } from "react";
 import wikipedia from "../../api/wikipedia";
 
 function Search() {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("cat");
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
 
   const [results, setResults] = useState([]);
 
   const handleInputSearch = (event) => setTerm(event.target.value);
 
   useEffect(() => {
-    let timer = null;
-    const search = async () => {
-      try {
-        const { data } = await wikipedia.get("", {
-          params: { srsearch: term },
-        });
+    const timer = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 3000);
 
-        setResults(data.query.search);
-      } catch (e) {
-        console.dir(e.message);
-      }
-    };
-
-    /* // when initial term value is set
-    if (term && !results.length) {
-      search();
-    } else {
-      timer = setTimeout(search, 1000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }*/
-
-    // when no initial term value is set
-    if (term) {
-      timer = setTimeout(search, 1000);
-    }
-
-    return () => {
-      clearTimeout(timer);
-    };
+    return () => clearTimeout(timer);
   }, [term]);
+
+  useEffect(() => {
+    if (debouncedTerm) {
+      (async () => {
+        try {
+          const { data } = await wikipedia.get("", {
+            params: { srsearch: debouncedTerm },
+          });
+
+          setResults(data.query.search);
+        } catch (e) {
+          console.dir(e.message);
+        }
+      })();
+    }
+  }, [debouncedTerm]);
 
   const renderedResults = results.map((result) => {
     return (
