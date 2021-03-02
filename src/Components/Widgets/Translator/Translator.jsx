@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
+import Convert from "./Convert";
 
 const options = [
   {
@@ -23,11 +24,31 @@ const options = [
     label: "Russian",
     value: "ru",
   },
+  {
+    label: "Italian",
+    value: "it",
+  },
+  {
+    label: "Ukrainian",
+    value: "uk",
+  },
+  {
+    label: "Portuguese",
+    value: "pt",
+  },
+  {
+    label: "Romanian",
+    value: "ro",
+  },
+  {
+    label: "Czech",
+    value: "cs",
+  },
 ];
 
 const Translator = () => {
   const [language, setLanguage] = useState(options[0]);
-  const [text, setText] = useState("Some text");
+  const [text, setText] = useState("");
 
   return (
     <div>
@@ -39,7 +60,7 @@ const Translator = () => {
           <input
             id="text"
             type="text"
-            placeholder={text}
+            placeholder="Enter some text to translate"
             onChange={(e) => setText(e.target.value)}
           />
         </div>
@@ -50,6 +71,7 @@ const Translator = () => {
         onSelectedLangChange={setLanguage}
         label="Select a Language"
       />
+      <Convert language={language} text={text} />
     </div>
   );
 };
