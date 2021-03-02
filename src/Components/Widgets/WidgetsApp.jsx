@@ -1,8 +1,8 @@
 import React from "react";
-import DropdownApp from "./Dropdown/DropdownApp";
+import TranslatorApp from "./Translator/TranslatorApp";
 
 const WidgetsApp = () => {
-  return <DropdownApp />;
+  return <TranslatorApp />;
 };
 
 export default WidgetsApp;
