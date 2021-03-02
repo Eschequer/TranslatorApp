@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import wikipedia from "../../api/wikipedia";
 
 function Search() {
+  console.log("Component");
   const [term, setTerm] = useState("cat");
   const [debouncedTerm, setDebouncedTerm] = useState(term);
 
   const [results, setResults] = useState([]);
 
-  const handleInputSearch = (event) => setTerm(event.target.value);
+  const handleInputSearch = (event) => {
+    setTerm(event.target.value);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedTerm(term);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [term]);

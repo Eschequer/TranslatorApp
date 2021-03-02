@@ -1,12 +1,8 @@
 import React from "react";
-import Search from "./Search";
+import DropdownApp from "./Dropdown/DropdownApp";
 
 const WidgetsApp = () => {
-  return (
-    <div>
-      <Search />
-    </div>
-  );
+  return <DropdownApp />;
 };
 
 export default WidgetsApp;
