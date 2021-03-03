@@ -3,51 +3,8 @@ import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import Convert from "./Convert";
 
-const options = [
-  {
-    label: "French",
-    value: "fr",
-  },
-  {
-    label: "Spanish",
-    value: "es",
-  },
-  {
-    label: "Polish",
-    value: "pl",
-  },
-  {
-    label: "German",
-    value: "de",
-  },
-  {
-    label: "Russian",
-    value: "ru",
-  },
-  {
-    label: "Italian",
-    value: "it",
-  },
-  {
-    label: "Ukrainian",
-    value: "uk",
-  },
-  {
-    label: "Portuguese",
-    value: "pt",
-  },
-  {
-    label: "Romanian",
-    value: "ro",
-  },
-  {
-    label: "Czech",
-    value: "cs",
-  },
-];
-
-const Translator = () => {
-  const [language, setLanguage] = useState(options[0]);
+const Translator = ({ langOptions }) => {
+  const [language, setLanguage] = useState(langOptions[0]);
   const [text, setText] = useState("");
 
   return (
@@ -61,12 +18,13 @@ const Translator = () => {
             id="text"
             type="text"
             placeholder="Enter some text to translate"
+            value={text}
             onChange={(e) => setText(e.target.value)}
           />
         </div>
       </div>
       <Dropdown
-        options={options}
+        options={langOptions}
         selectedLang={language}
         onSelectedLangChange={setLanguage}
         label="Select a Language"

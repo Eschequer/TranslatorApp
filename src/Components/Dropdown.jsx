@@ -5,15 +5,15 @@ const Dropdown = ({ options, selectedLang, onSelectedLangChange, label }) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener(
-      "click",
-      (e) => {
-        if (ref.current && ref.current.contains(e.target)) return;
+    function bodyClickHandler(e) {
+      if (ref.current && ref.current.contains(e.target)) return;
 
-        setOpen(false);
-      },
-      true
-    );
+      setOpen(false);
+    }
+
+    document.body.addEventListener("click", bodyClickHandler, true);
+
+    return () => document.body.removeEventListener("click", bodyClickHandler);
   }, []);
 
   const renderedOptions = options.map((option) => {

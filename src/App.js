@@ -1,24 +1,55 @@
-import logo from "./logo.svg";
-import "./App.css";
 import React from "react";
+import Translator from "./Components/Translator";
 
-function App() {
+const options = [
+  {
+    label: "Russian",
+    value: "ru",
+  },
+  {
+    label: "French",
+    value: "fr",
+  },
+  {
+    label: "Spanish",
+    value: "es",
+  },
+  {
+    label: "Polish",
+    value: "pl",
+  },
+  {
+    label: "German",
+    value: "de",
+  },
+  {
+    label: "Italian",
+    value: "it",
+  },
+  {
+    label: "Ukrainian",
+    value: "uk",
+  },
+  {
+    label: "Portuguese",
+    value: "pt",
+  },
+  {
+    label: "Romanian",
+    value: "ro",
+  },
+  {
+    label: "Czech",
+    value: "cs",
+  },
+];
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Context is {}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Translator langOptions={options} />
     </div>
   );
-}
+};
 
 export default App;
