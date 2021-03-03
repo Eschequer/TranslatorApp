@@ -1,52 +1,41 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import youtube from "../../api/youtube";
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
-import VideoDetail from "../ImagesDisplay/VideoDetail";
+import VideoDetail from "./VideoDetail";
 
-class VideoDisplayApp extends Component {
-  state = { videos: [], selectedVideo: null };
+function VideoDisplayApp() {
+  const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  handleTermSubmit = async (term) => {
+  useEffect(() => {
+    handleTermSubmit().catch((error) => console.dir(error.message));
+  }, []);
+
+  async function handleTermSubmit(term) {
     const { data } = await youtube.get("/search", {
       params: { q: term },
     });
 
-    this.setState({ videos: data.items, selectedVideo: data.items[0] });
-  };
-
-  handleVideoSelect = (video) => {
-    this.setState({ selectedVideo: video });
-  };
-
-  componentDidMount() {
-    this.handleTermSubmit("music").catch((error) => console.dir(error.message));
+    setVideos(data.items);
+    setSelectedVideo(data.items[0]);
   }
 
-  render() {
-    return (
-      <div>
-        <SearchBar onTermSubmit={this.handleTermSubmit} />
-        <div className="ui grid">
-          <div
-            className={
-              this.state.videos.length
-                ? "eleven wide column"
-                : "five wide column"
-            }
-          >
-            <VideoDetail video={this.state.selectedVideo} />
-          </div>
-          <div className=" five wide column">
-            <VideoList
-              videos={this.state.videos}
-              onVideoSelect={this.handleVideoSelect}
-            />
-          </div>
+  return (
+    <div>
+      <SearchBar onTermSubmit={handleTermSubmit} />
+      <div className="ui grid">
+        <div
+          className={videos.length ? "eleven wide column" : "five wide column"}
+        >
+          <VideoDetail video={selectedVideo} />
+        </div>
+        <div className=" five wide column">
+          <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default VideoDisplayApp;
