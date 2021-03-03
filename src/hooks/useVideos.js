@@ -5,9 +5,11 @@ function useVideos(defaultSearchTerm) {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    searchVideos(defaultSearchTerm).catch((error) =>
-      console.dir(error.message)
-    );
+    if (defaultSearchTerm) {
+      searchVideos(defaultSearchTerm).catch((error) =>
+        console.dir(error.message)
+      );
+    }
   }, []);
 
   async function searchVideos(term) {
