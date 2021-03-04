@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-import VideoDisplayApp from "./Components/VideoDisplay/VideoDisplayApp";
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <VideoDisplayApp />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
