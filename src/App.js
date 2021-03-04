@@ -45,11 +45,7 @@ const options = [
 ];
 
 const App = () => {
-  return (
-    <div>
-      <Translator langOptions={options} />
-    </div>
-  );
+  return <Translator langOptions={options} />;
 };
 
 export default App;
